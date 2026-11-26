@@ -26,6 +26,28 @@ void ExecutorImpl::Execute(const std::string& commands) noexcept
             } else if (pose.heading == 'S') {
                 --pose.y;
             }
+        } else if (cmd == 'L') {
+            // 左转 90 度：E->N, N->W, W->S, S->E，位置不变
+            if (pose.heading == 'E') {
+                pose.heading = 'N';
+            } else if (pose.heading == 'N') {
+                pose.heading = 'W';
+            } else if (pose.heading == 'W') {
+                pose.heading = 'S';
+            } else if (pose.heading == 'S') {
+                pose.heading = 'E';
+            }
+        } else if (cmd == 'R') {
+            // 右转 90 度：E->S, S->W, W->N, N->E，位置不变
+            if (pose.heading == 'E') {
+                pose.heading = 'S';
+            } else if (pose.heading == 'S') {
+                pose.heading = 'W';
+            } else if (pose.heading == 'W') {
+                pose.heading = 'N';
+            } else if (pose.heading == 'N') {
+                pose.heading = 'E';
+            }
         }
     }
 }
